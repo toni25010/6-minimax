@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Si-3.26 РђРЅР°Р»РёС‚РёРє | РЎРёРіРЅР°Р»С‹ + РЈРІРµРґРѕРјР»РµРЅРёСЏ</title>
+    <title>Si-3.26 Аналитик | Сигналы + Уведомления</title>
     <script src="https://unpkg.com/lightweight-charts@4.0.1/dist/lightweight-charts.standalone.production.js"></script>
     <style>
         :root {
@@ -112,7 +112,7 @@
             border-color: var(--accent);
         }
 
-        /* РЈРІРµРґРѕРјР»РµРЅРёСЏ */
+        /* Уведомления */
         .notification-container {
             position: fixed;
             top: 20px;
@@ -200,7 +200,7 @@
             50% { box-shadow: 0 8px 32px rgba(137, 87, 229, 0.3); }
         }
 
-        /* Р­РєРѕРЅРѕРјРёС‡РµСЃРєРёР№ РєР°Р»РµРЅРґР°СЂСЊ */
+        /* Экономический календарь */
         .calendar-container {
             margin-top: 16px;
             max-height: 350px;
@@ -343,7 +343,7 @@
             border-color: var(--accent);
         }
 
-        /* РќРѕРІРѕСЃС‚Рё */
+        /* Новости */
         .news-container {
             margin-top: 16px;
             max-height: 300px;
@@ -419,7 +419,7 @@
         .sentiment-bearish { background: rgba(248, 81, 73, 0.2); color: var(--sell); }
         .sentiment-neutral { background: rgba(139, 148, 158, 0.2); color: #8b949e; }
 
-        /* РРЅРґРёРєР°С‚РѕСЂ РІР»РёСЏРЅРёСЏ */
+        /* Индикатор влияния */
         .influence-panel {
             background: #0d1117;
             border-radius: 12px;
@@ -480,7 +480,7 @@
             text-align: right;
         }
 
-        /* РСЃС‚РѕСЂРёСЏ СЃРёРіРЅР°Р»РѕРІ */
+        /* История сигналов */
         .signal-history {
             margin-top: 16px;
             max-height: 200px;
@@ -527,7 +527,7 @@
             color: #8b949e;
         }
 
-        /* РќР°СЃС‚СЂРѕР№РєРё */
+        /* Настройки */
         .settings-row {
             display: flex;
             align-items: center;
@@ -855,10 +855,10 @@
     </style>
 </head>
 <body>
-    <!-- РљРѕРЅС‚РµР№РЅРµСЂ РґР»СЏ СѓРІРµРґРѕРјР»РµРЅРёР№ -->
+    <!-- Контейнер для уведомлений -->
     <div class="notification-container" id="notificationContainer"></div>
 
-    <h2>РђРЅР°Р»РёР· Si-3.26 (H6) | РљРѕРјРїР»РµРєСЃРЅР°СЏ СЃРёСЃС‚РµРјР° СЃРёРіРЅР°Р»РѕРІ</h2>
+    <h2>Анализ Si-3.26 (H6) | Комплексная система сигналов</h2>
 
     <div class="grid">
         <div class="card" id="chartContainer">
@@ -871,39 +871,39 @@
                 <button class="tf-btn" data-tf="10080" type="button">1W</button>
             </div>
             <div id="chart">
-                <div id="loading"><div class="spinner"></div> Р—Р°РіСЂСѓР·РєР° РґР°РЅРЅС‹С… MOEX...</div>
+                <div id="loading"><div class="spinner"></div> Загрузка данных MOEX...</div>
             </div>
-            <div class="last-update" id="lastUpdate">РџРѕСЃР»РµРґРЅРµРµ РѕР±РЅРѕРІР»РµРЅРёРµ: -</div>
+            <div class="last-update" id="lastUpdate">Последнее обновление: -</div>
 
-            <!-- РџР°РЅРµР»СЊ РІР»РёСЏРЅРёСЏ С„Р°РєС‚РѕСЂРѕРІ -->
+            <!-- Панель влияния факторов -->
             <div class="influence-panel" id="influencePanel">
                 <div class="influence-title">
-                    <span>рџ“Љ РљРѕРјРїР»РµРєСЃРЅС‹Р№ Р°РЅР°Р»РёР· С„Р°РєС‚РѕСЂРѕРІ</span>
+                    <span>📊 Комплексный анализ факторов</span>
                 </div>
                 <div class="influence-bars">
                     <div class="influence-row">
-                        <span class="influence-label">РўРµС…РЅРёС‡РµСЃРєРёР№</span>
+                        <span class="influence-label">Технический</span>
                         <div class="influence-bar">
                             <div class="influence-fill neutral" id="techBar" style="width: 50%"></div>
                         </div>
                         <span class="influence-value" id="techScore">0</span>
                     </div>
                     <div class="influence-row">
-                        <span class="influence-label">РќРѕРІРѕСЃС‚Рё</span>
+                        <span class="influence-label">Новости</span>
                         <div class="influence-bar">
                             <div class="influence-fill neutral" id="newsBar" style="width: 50%"></div>
                         </div>
                         <span class="influence-value" id="newsScore">0</span>
                     </div>
                     <div class="influence-row">
-                        <span class="influence-label">РљР°Р»РµРЅРґР°СЂСЊ</span>
+                        <span class="influence-label">Календарь</span>
                         <div class="influence-bar">
                             <div class="influence-fill neutral" id="calendarBar" style="width: 50%"></div>
                         </div>
                         <span class="influence-value" id="calendarScore">0</span>
                     </div>
                     <div class="influence-row" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border);">
-                        <span class="influence-label" style="font-weight: 600; color: var(--text);">РРўРћР“Рћ</span>
+                        <span class="influence-label" style="font-weight: 600; color: var(--text);">ИТОГО</span>
                         <div class="influence-bar">
                             <div class="influence-fill neutral" id="totalBar" style="width: 50%"></div>
                         </div>
@@ -912,40 +912,40 @@
                 </div>
             </div>
 
-            <!-- Р­РєРѕРЅРѕРјРёС‡РµСЃРєРёР№ РєР°Р»РµРЅРґР°СЂСЊ -->
+            <!-- Экономический календарь -->
             <div class="calendar-container" id="calendarContainer">
                 <div class="calendar-header">
                     <div class="calendar-title">
-                        <span>рџ“… Р­РєРѕРЅРѕРјРёС‡РµСЃРєРёР№ РєР°Р»РµРЅРґР°СЂСЊ</span>
+                        <span>📅 Экономический календарь</span>
                         <span class="calendar-badge" id="calendarCount">0</span>
                     </div>
-                    <button class="small" onclick="refreshCalendar()" style="width: auto; padding: 6px 12px; margin: 0;">рџ”„</button>
+                    <button class="small" onclick="refreshCalendar()" style="width: auto; padding: 6px 12px; margin: 0;">🔄</button>
                 </div>
                 <div class="calendar-filter">
-                    <button class="filter-btn active" onclick="filterCalendar('all')">Р’СЃРµ</button>
-                    <button class="filter-btn" onclick="filterCalendar('high')">рџ”ґ Р’Р°Р¶РЅС‹Рµ</button>
-                    <button class="filter-btn" onclick="filterCalendar('medium')">рџџЎ РЎСЂРµРґРЅРёРµ</button>
-                    <button class="filter-btn" onclick="filterCalendar('usd')">рџ’µ USD</button>
-                    <button class="filter-btn" onclick="filterCalendar('rub')">рџ‡·рџ‡є RUB</button>
+                    <button class="filter-btn active" onclick="filterCalendar('all')">Все</button>
+                    <button class="filter-btn" onclick="filterCalendar('high')">🔴 Важные</button>
+                    <button class="filter-btn" onclick="filterCalendar('medium')">🟡 Средние</button>
+                    <button class="filter-btn" onclick="filterCalendar('usd')">💵 USD</button>
+                    <button class="filter-btn" onclick="filterCalendar('rub')">🇷🇺 RUB</button>
                 </div>
-                <div id="calendarList">Р—Р°РіСЂСѓР·РєР° РєР°Р»РµРЅРґР°СЂСЏ...</div>
+                <div id="calendarList">Загрузка календаря...</div>
             </div>
 
-            <!-- РќРѕРІРѕСЃС‚РЅРѕР№ С„РѕРЅ -->
+            <!-- Новостной фон -->
             <div class="news-container" id="newsContainer">
                 <div class="news-header">
                     <div class="news-title">
-                        <span>рџ“° РќРѕРІРѕСЃС‚РЅРѕР№ С„РѕРЅ</span>
+                        <span>📰 Новостной фон</span>
                         <span class="news-badge" id="newsCount">0</span>
                     </div>
-                    <button class="small" onclick="refreshNews()" style="width: auto; padding: 6px 12px; margin: 0;">рџ”„</button>
+                    <button class="small" onclick="refreshNews()" style="width: auto; padding: 6px 12px; margin: 0;">🔄</button>
                 </div>
                 <div class="calendar-filter">
-                    <button class="filter-btn active" onclick="filterNews('all')">Р’СЃРµ</button>
-                    <button class="filter-btn" onclick="filterNews('bullish')">рџ“€ Р‘С‹С‡СЊРё</button>
-                    <button class="filter-btn" onclick="filterNews('bearish')">рџ“‰ РњРµРґРІРµР¶СЊРё</button>
+                    <button class="filter-btn active" onclick="filterNews('all')">Все</button>
+                    <button class="filter-btn" onclick="filterNews('bullish')">📈 Бычьи</button>
+                    <button class="filter-btn" onclick="filterNews('bearish')">📉 Медвежьи</button>
                 </div>
-                <div id="newsList">Р—Р°РіСЂСѓР·РєР° РЅРѕРІРѕСЃС‚РµР№...</div>
+                <div id="newsList">Загрузка новостей...</div>
             </div>
         </div>
 
@@ -953,28 +953,28 @@
             <div class="card">
                 <div class="price-ticker" id="priceTicker">
                     <div class="ticker-item">
-                        <div class="ticker-label">Р¦РµРЅР°</div>
+                        <div class="ticker-label">Цена</div>
                         <div class="ticker-value" id="currentPrice">-</div>
                         <div class="ticker-change" id="priceChange">-</div>
                     </div>
                     <div class="ticker-item">
-                        <div class="ticker-label">РР·РјРµРЅРµРЅРёРµ</div>
+                        <div class="ticker-label">Изменение</div>
                         <div class="ticker-value" id="changePercent">-</div>
                         <div class="ticker-change" id="changeValue">-</div>
                     </div>
                 </div>
 
                 <div id="signal_ui" class="signal-display hold">
-                    <div style="font-size: 11px; opacity: 0.7;">РўР•РљРЈР©РР™ РЎРР“РќРђР›</div>
-                    <div id="signal_text" style="font-size: 26px; font-weight: bold;">РћР–РР”РђРќРР•</div>
+                    <div style="font-size: 11px; opacity: 0.7;">ТЕКУЩИЙ СИГНАЛ</div>
+                    <div id="signal_text" style="font-size: 26px; font-weight: bold;">ОЖИДАНИЕ</div>
                     <div id="signal_confidence" style="font-size: 12px; margin-top: 4px; opacity: 0.8;"></div>
                 </div>
 
-                <div id="ai_desc" class="info">РќР°Р¶РјРёС‚Рµ РєРЅРѕРїРєСѓ РґР»СЏ РєРѕРјРїР»РµРєСЃРЅРѕРіРѕ Р°РЅР°Р»РёР·Р°</div>
+                <div id="ai_desc" class="info">Нажмите кнопку для комплексного анализа</div>
 
-                <!-- РЎРІРѕРґРєР° С„Р°РєС‚РѕСЂРѕРІ Р°РЅР°Р»РёР·Р° -->
+                <!-- Сводка факторов анализа -->
                 <div class="analysis-summary" id="analysisSummary" style="display: none;">
-                    <div class="analysis-title">рџ“‹ Р¤Р°РєС‚РѕСЂС‹ СЂРµС€РµРЅРёСЏ</div>
+                    <div class="analysis-title">📋 Факторы решения</div>
                     <div class="analysis-factors" id="analysisFactors"></div>
                 </div>
 
@@ -982,63 +982,63 @@
                     <div class="stat-item"><div class="stat-label">RSI (14)</div><div class="stat-value" id="statRsi">-</div></div>
                     <div class="stat-item"><div class="stat-label">MACD</div><div class="stat-value" id="statMacd">-</div></div>
                     <div class="stat-item"><div class="stat-label">EMA 20/50</div><div class="stat-value" id="statEma">-</div></div>
-                    <div class="stat-item"><div class="stat-label">РўСЂРµРЅРґ</div><div class="stat-value" id="statTrend">-</div></div>
+                    <div class="stat-item"><div class="stat-label">Тренд</div><div class="stat-value" id="statTrend">-</div></div>
                 </div>
 
                 <div class="auto-update-row">
                     <label class="auto-update-label">
-                        <input type="checkbox" id="autoUpdateCheck" checked> РђРІС‚РѕРѕР±РЅРѕРІР»РµРЅРёРµ (30 СЃРµРє)
+                        <input type="checkbox" id="autoUpdateCheck" checked> Автообновление (30 сек)
                     </label>
                     <span class="timer" id="timerDisplay">00:30</span>
                 </div>
 
-                <button onclick="runComplexAnalysis()" type="button"> РљРћРњРџР›Р•РљРЎРќР«Р™ РђРќРђР›РР—</button>
-                <button class="small" onclick="toggleProxy()" id="proxyBtn" type="button">рџ”Ѓ CORS-РїСЂРѕРєСЃРё: Р’Р«РљР›</button>
+                <button onclick="runComplexAnalysis()" type="button"> КОМПЛЕКСНЫЙ АНАЛИЗ</button>
+                <button class="small" onclick="toggleProxy()" id="proxyBtn" type="button">🔁 CORS-прокси: ВЫКЛ</button>
             </div>
 
-            <!-- РќР°СЃС‚СЂРѕР№РєРё СѓРІРµРґРѕРјР»РµРЅРёР№ -->
+            <!-- Настройки уведомлений -->
             <div class="card" style="margin-top: 16px;">
-                <div style="font-weight: 600; margin-bottom: 12px; color: var(--accent);">рџ”” РќР°СЃС‚СЂРѕР№РєРё СЃРёРіРЅР°Р»РѕРІ</div>
+                <div style="font-weight: 600; margin-bottom: 12px; color: var(--accent);">🔔 Настройки сигналов</div>
 
                 <div class="settings-row">
-                    <span class="settings-label">рџ”Љ Р—РІСѓРєРѕРІРѕР№ СЃРёРіРЅР°Р»</span>
+                    <span class="settings-label">🔊 Звуковой сигнал</span>
                     <div class="toggle-switch active" id="soundToggle" onclick="toggleSetting('sound')"></div>
                 </div>
 
                 <div class="settings-row">
-                    <span class="settings-label">рџ’¬ Р’РёР·СѓР°Р»СЊРЅС‹Рµ СѓРІРµРґРѕРјР»РµРЅРёСЏ</span>
+                    <span class="settings-label">💬 Визуальные уведомления</span>
                     <div class="toggle-switch active" id="notificationToggle" onclick="toggleSetting('notification')"></div>
                 </div>
 
                 <div class="settings-row" style="border-bottom: none;">
-                    <span class="settings-label">рџ“± РўРѕР»СЊРєРѕ РІР°Р¶РЅС‹Рµ (BUY/SELL)</span>
+                    <span class="settings-label">📱 Только важные (BUY/SELL)</span>
                     <div class="toggle-switch active" id="importantOnlyToggle" onclick="toggleSetting('importantOnly')"></div>
                 </div>
 
-                <button class="small" onclick="testSignal()" style="margin-top: 12px;">рџ§Є РўРµСЃС‚ СЃРёРіРЅР°Р»Р°</button>
+                <button class="small" onclick="testSignal()" style="margin-top: 12px;">🧪 Тест сигнала</button>
             </div>
 
-            <!-- РСЃС‚РѕСЂРёСЏ СЃРёРіРЅР°Р»РѕРІ -->
+            <!-- История сигналов -->
             <div class="card" style="margin-top: 16px;">
-                <div class="signal-history-title">рџ“њ РСЃС‚РѕСЂРёСЏ СЃРёРіРЅР°Р»РѕРІ</div>
+                <div class="signal-history-title">📜 История сигналов</div>
                 <div class="signal-history" id="signalHistory">
                     <div style="text-align: center; color: #8b949e; font-size: 12px; padding: 20px;">
-                        РСЃС‚РѕСЂРёСЏ РїСѓСЃС‚Р°
+                        История пуста
                     </div>
                 </div>
             </div>
 
             <div class="card" style="margin-top: 16px;">
-                <label style="font-weight: 500;">рџ”‘ OpenRouter API Key:</label>
+                <label style="font-weight: 500;">🔑 OpenRouter API Key:</label>
                 <input type="password" id="api_key_input" placeholder="sk-or-v1-..." value="">
-                <button style="background: #21262d;" onclick="saveConfig()" type="button">рџ’ѕ РЎРѕС…СЂР°РЅРёС‚СЊ РєР»СЋС‡</button>
+                <button style="background: #21262d;" onclick="saveConfig()" type="button">💾 Сохранить ключ</button>
             </div>
         </div>
     </div>
 
     <script>
         // ============================================
-        // Р“Р›РћР‘РђР›Р¬РќРћР• РЎРћРЎРўРћРЇРќРР•
+        // ГЛОБАЛЬНОЕ СОСТОЯНИЕ
         // ============================================
         const settings = {
             sound: true,
@@ -1076,7 +1076,7 @@
         };
 
         // ============================================
-        // Р—Р’РЈРљРћР’Р«Р• РЎРР“РќРђР›Р«
+        // ЗВУКОВЫЕ СИГНАЛЫ
         // ============================================
         function playSignalSound(type) {
             if (!settings.sound) return;
@@ -1120,34 +1120,34 @@
         }
 
         // ============================================
-        // РЈР’Р•Р”РћРњР›Р•РќРРЇ
+        // УВЕДОМЛЕНИЯ
         // ============================================
         function showNotification(signal, price, reason, confidence) {
-            if (settings.importantOnly && signal === 'Р”Р•Р Р–РђРўР¬') return;
+            if (settings.importantOnly && signal === 'ДЕРЖАТЬ') return;
 
             const container = document.getElementById('notificationContainer');
 
             const icons = {
-                'РџРћРљРЈРџРљРђ': '',
-                'РџР РћР”РђР–Рђ': '',
-                'Р”Р•Р Р–РђРўР¬': 'вЏёпёЏ'
+                'ПОКУПКА': '',
+                'ПРОДАЖА': '',
+                'ДЕРЖАТЬ': '⏸️'
             };
 
             const titles = {
-                'РџРћРљРЈРџРљРђ': 'РЎРёРіРЅР°Р» РЅР° РџРћРљРЈРџРљРЈ',
-                'РџР РћР”РђР–Рђ': 'РЎРёРіРЅР°Р» РЅР° РџР РћР”РђР–РЈ',
-                'Р”Р•Р Р–РђРўР¬': 'РЎРёРіРЅР°Р» Р”Р•Р Р–РђРўР¬'
+                'ПОКУПКА': 'Сигнал на ПОКУПКУ',
+                'ПРОДАЖА': 'Сигнал на ПРОДАЖУ',
+                'ДЕРЖАТЬ': 'Сигнал ДЕРЖАТЬ'
             };
 
             const notification = document.createElement('div');
-            notification.className = `notification ${signal === 'РџРћРљРЈРџРљРђ' ? 'buy' : signal === 'РџР РћР”РђР–Рђ' ? 'sell' : ''}`;
+            notification.className = `notification ${signal === 'ПОКУПКА' ? 'buy' : signal === 'ПРОДАЖА' ? 'sell' : ''}`;
             notification.innerHTML = `
                 <div class="notification-icon">${icons[signal]}</div>
                 <div class="notification-content">
                     <div class="notification-title">${titles[signal]} (${confidence}%)</div>
-                    <div class="notification-text">Р¦РµРЅР°: ${price.toFixed(2)} | ${reason.substring(0, 60)}...</div>
+                    <div class="notification-text">Цена: ${price.toFixed(2)} | ${reason.substring(0, 60)}...</div>
                 </div>
-                <button class="notification-close" onclick="this.parentElement.remove()">Г—</button>
+                <button class="notification-close" onclick="this.parentElement.remove()">×</button>
             `;
 
             setTimeout(() => {
@@ -1159,7 +1159,7 @@
             }, 10000);
 
             container.appendChild(notification);
-            playSignalSound(signal === 'РџРћРљРЈРџРљРђ' ? 'buy' : signal === 'РџР РћР”РђР–Рђ' ? 'sell' : 'hold');
+            playSignalSound(signal === 'ПОКУПКА' ? 'buy' : signal === 'ПРОДАЖА' ? 'sell' : 'hold');
 
             addToSignalHistory(signal, price, confidence);
         }
@@ -1187,12 +1187,12 @@
             const container = document.getElementById('signalHistory');
 
             if (signalHistory.length === 0) {
-                container.innerHTML = '<div style="text-align: center; color: #8b949e; font-size: 12px; padding: 20px;">РСЃС‚РѕСЂРёСЏ РїСѓСЃС‚Р°</div>';
+                container.innerHTML = '<div style="text-align: center; color: #8b949e; font-size: 12px; padding: 20px;">История пуста</div>';
                 return;
             }
 
             container.innerHTML = signalHistory.map(item => `
-                <div class="signal-history-item ${item.signal === 'РџРћРљРЈРџРљРђ' ? 'buy' : item.signal === 'РџР РћР”РђР–Рђ' ? 'sell' : 'hold'}">
+                <div class="signal-history-item ${item.signal === 'ПОКУПКА' ? 'buy' : item.signal === 'ПРОДАЖА' ? 'sell' : 'hold'}">
                     <span class="signal-history-time">${item.time}</span>
                     <span class="signal-history-signal">${item.signal}</span>
                     <span class="signal-history-price">${item.price.toFixed(2)}</span>
@@ -1201,7 +1201,7 @@
         }
 
         // ============================================
-        // РўР•РҐРќРР§Р•РЎРљРР™ РђРќРђР›РР—
+        // ТЕХНИЧЕСКИЙ АНАЛИЗ
         // ============================================
         function calculateTechnicalAnalysis(data) {
             if (!data || data.length < 50) {
@@ -1221,17 +1221,17 @@
             if (lastRsi < 30) {
                 rsiScore = 30;
                 rsiDirection = 'bullish';
-                factors.push({ name: 'RSI РїРµСЂРµРїСЂРѕРґР°РЅ', score: 30, direction: 'bullish' });
+                factors.push({ name: 'RSI перепродан', score: 30, direction: 'bullish' });
             } else if (lastRsi > 70) {
                 rsiScore = -30;
                 rsiDirection = 'bearish';
-                factors.push({ name: 'RSI РїРµСЂРµРєСѓРїР»РµРЅ', score: -30, direction: 'bearish' });
+                factors.push({ name: 'RSI перекуплен', score: -30, direction: 'bearish' });
             } else if (lastRsi < 45) {
                 rsiScore = 10;
-                factors.push({ name: 'RSI Р±Р»РёР¶Рµ Рє РїРµСЂРµРїСЂРѕРґР°РЅРЅРѕСЃС‚Рё', score: 10, direction: 'bullish' });
+                factors.push({ name: 'RSI ближе к перепроданности', score: 10, direction: 'bullish' });
             } else if (lastRsi > 55) {
                 rsiScore = -10;
-                factors.push({ name: 'RSI Р±Р»РёР¶Рµ Рє РїРµСЂРµРєСѓРїР»РµРЅРЅРѕСЃС‚Рё', score: -10, direction: 'bearish' });
+                factors.push({ name: 'RSI ближе к перекупленности', score: -10, direction: 'bearish' });
             }
             totalScore += rsiScore;
 
@@ -1243,16 +1243,16 @@
             let macdScore = 0;
             if (lastMacd > 0 && prevMacd <= 0) {
                 macdScore = 25;
-                factors.push({ name: 'MACD РїРµСЂРµСЃС‘Рє РЅРѕР»СЊ РІРІРµСЂС…', score: 25, direction: 'bullish' });
+                factors.push({ name: 'MACD пересёк ноль вверх', score: 25, direction: 'bullish' });
             } else if (lastMacd < 0 && prevMacd >= 0) {
                 macdScore = -25;
-                factors.push({ name: 'MACD РїРµСЂРµСЃС‘Рє РЅРѕР»СЊ РІРЅРёР·', score: -25, direction: 'bearish' });
+                factors.push({ name: 'MACD пересёк ноль вниз', score: -25, direction: 'bearish' });
             } else if (lastMacd > 0) {
                 macdScore = 10;
-                factors.push({ name: 'MACD РІС‹С€Рµ РЅСѓР»СЏ', score: 10, direction: 'bullish' });
+                factors.push({ name: 'MACD выше нуля', score: 10, direction: 'bullish' });
             } else {
                 macdScore = -10;
-                factors.push({ name: 'MACD РЅРёР¶Рµ РЅСѓР»СЏ', score: -10, direction: 'bearish' });
+                factors.push({ name: 'MACD ниже нуля', score: -10, direction: 'bearish' });
             }
             totalScore += macdScore;
 
@@ -1266,33 +1266,33 @@
             let emaScore = 0;
             if (lastEma20 > lastEma50 && lastPrice > lastEma20) {
                 emaScore = 20;
-                factors.push({ name: 'Р¦РµРЅР° РІС‹С€Рµ EMA20 > EMA50', score: 20, direction: 'bullish' });
+                factors.push({ name: 'Цена выше EMA20 > EMA50', score: 20, direction: 'bullish' });
             } else if (lastEma20 < lastEma50 && lastPrice < lastEma20) {
                 emaScore = -20;
-                factors.push({ name: 'Р¦РµРЅР° РЅРёР¶Рµ EMA20 < EMA50', score: -20, direction: 'bearish' });
+                factors.push({ name: 'Цена ниже EMA20 < EMA50', score: -20, direction: 'bearish' });
             } else if (lastPrice > lastEma20) {
                 emaScore = 10;
-                factors.push({ name: 'Р¦РµРЅР° РІС‹С€Рµ EMA20', score: 10, direction: 'bullish' });
+                factors.push({ name: 'Цена выше EMA20', score: 10, direction: 'bullish' });
             } else {
                 emaScore = -10;
-                factors.push({ name: 'Р¦РµРЅР° РЅРёР¶Рµ EMA20', score: -10, direction: 'bearish' });
+                factors.push({ name: 'Цена ниже EMA20', score: -10, direction: 'bearish' });
             }
             totalScore += emaScore;
 
-            // РўСЂРµРЅРґ РїРѕ РїРѕСЃР»РµРґРЅРёРј СЃРІРµС‡Р°Рј
+            // Тренд по последним свечам
             const recentCloses = closes.slice(-10);
             const trendUp = recentCloses.every((c, i) => i === 0 || c >= recentCloses[i-1] * 0.998);
             const trendDown = recentCloses.every((c, i) => i === 0 || c <= recentCloses[i-1] * 1.002);
 
             if (trendUp) {
                 totalScore += 15;
-                factors.push({ name: 'Р’РѕСЃС…РѕРґСЏС‰РёР№ С‚СЂРµРЅРґ', score: 15, direction: 'bullish' });
+                factors.push({ name: 'Восходящий тренд', score: 15, direction: 'bullish' });
             } else if (trendDown) {
                 totalScore -= 15;
-                factors.push({ name: 'РќРёСЃС…РѕРґСЏС‰РёР№ С‚СЂРµРЅРґ', score: -15, direction: 'bearish' });
+                factors.push({ name: 'Нисходящий тренд', score: -15, direction: 'bearish' });
             }
 
-            // РќРѕСЂРјР°Р»РёР·СѓРµРј score РѕС‚ -100 РґРѕ 100
+            // Нормализуем score от -100 до 100
             totalScore = Math.max(-100, Math.min(100, totalScore));
 
             let direction = 'neutral';
@@ -1372,41 +1372,41 @@
         }
 
         // ============================================
-        // Р­РљРћРќРћРњРР§Р•РЎРљРР™ РљРђР›Р•РќР”РђР Р¬ (Р Р•РђР›Р¬РќР«Р• Р”РђРќРќР«Р•)
+        // ЭКОНОМИЧЕСКИЙ КАЛЕНДАРЬ (РЕАЛЬНЫЕ ДАННЫЕ)
         // ============================================
 
-        // РР·РІРµСЃС‚РЅС‹Рµ СЂРµРіСѓР»СЏСЂРЅС‹Рµ СЃРѕР±С‹С‚РёСЏ (СЂР°СЃРїРёСЃР°РЅРёРµ РЅР° 2026)
+        // Известные регулярные события (расписание на 2026)
         const KNOWN_EVENTS_2026 = {
-            // РЎРЁРђ - РїРµСЂРІР°СЏ РїСЏС‚РЅРёС†Р° РєР°Р¶РґРѕРіРѕ РјРµСЃСЏС†Р° (NFP)
+            // США - первая пятница каждого месяца (NFP)
             'us_nfp': { name: 'Non-Farm Payrolls', country: 'US', currency: 'USD', impact: 'high' },
-            // Р—Р°СЃРµРґР°РЅРёСЏ Р¤Р РЎ (РїСЂРёРјРµСЂРЅС‹Рµ РґР°С‚С‹ - СѓС‚РѕС‡РЅСЏР№С‚Рµ)
+            // Заседания ФРС (примерные даты - уточняйте)
             'us_fomc': { name: 'FOMC Meeting', country: 'US', currency: 'USD', impact: 'high' },
-            // Р РѕСЃСЃРёСЏ - Р·Р°СЃРµРґР°РЅРёСЏ Р¦Р‘ Р Р¤
-            'ru_cbr': { name: 'РљР»СЋС‡РµРІР°СЏ СЃС‚Р°РІРєР° Р¦Р‘ Р Р¤', country: 'RU', currency: 'RUB', impact: 'high' },
-            // РЎРЁРђ - РёРЅС„Р»СЏС†РёСЏ
-            'us_cpi': { name: 'CPI РЎРЁРђ', country: 'US', currency: 'USD', impact: 'high' },
-            'us_ppi': { name: 'PPI РЎРЁРђ', country: 'US', currency: 'USD', impact: 'medium' },
-            // РЎРЁРђ - СЂРѕР·РЅРёС‡РЅС‹Рµ РїСЂРѕРґР°Р¶Рё
+            // Россия - заседания ЦБ РФ
+            'ru_cbr': { name: 'Ключевая ставка ЦБ РФ', country: 'RU', currency: 'RUB', impact: 'high' },
+            // США - инфляция
+            'us_cpi': { name: 'CPI США', country: 'US', currency: 'USD', impact: 'high' },
+            'us_ppi': { name: 'PPI США', country: 'US', currency: 'USD', impact: 'medium' },
+            // США - розничные продажи
             'us_retail': { name: 'Retail Sales', country: 'US', currency: 'USD', impact: 'medium' },
-            // РЎРЁРђ - Р’Р’Рџ
+            // США - ВВП
             'us_gdp': { name: 'GDP Advance', country: 'US', currency: 'USD', impact: 'high' },
-            // Р РѕСЃСЃРёСЏ - РёРЅС„Р»СЏС†РёСЏ
-            'ru_inflation': { name: 'РРЅС„Р»СЏС†РёСЏ Р Р¤', country: 'RU', currency: 'RUB', impact: 'high' },
+            // Россия - инфляция
+            'ru_inflation': { name: 'Инфляция РФ', country: 'RU', currency: 'RUB', impact: 'high' },
             // PMI
             'us_manufacturing': { name: 'ISM Manufacturing', country: 'US', currency: 'USD', impact: 'medium' },
-            'ru_manufacturing': { name: 'PMI РџСЂРѕРёР·РІРѕРґСЃС‚РІРµРЅРЅС‹Р№ Р Р¤', country: 'RU', currency: 'RUB', impact: 'medium' }
+            'ru_manufacturing': { name: 'PMI Производственный РФ', country: 'RU', currency: 'RUB', impact: 'medium' }
         };
 
-        // Р“РµРЅРµСЂРёСЂСѓРµРј Р±Р»РёР¶Р°Р№С€РёРµ РёР·РІРµСЃС‚РЅС‹Рµ СЃРѕР±С‹С‚РёСЏ
+        // Генерируем ближайшие известные события
         function generateUpcomingEvents() {
             const now = new Date();
             const events = [];
 
-            // РћРїСЂРµРґРµР»СЏРµРј Р±Р»РёР¶Р°Р№С€СѓСЋ РїСЏС‚РЅРёС†Сѓ (NFP)
+            // Определяем ближайшую пятницу (NFP)
             const nextFriday = getNextFriday(now);
             const daysUntilFriday = Math.ceil((nextFriday - now) / (1000 * 60 * 60 * 24));
 
-            // NFP - РїРµСЂРІР°СЏ РїСЏС‚РЅРёС†Р° РєР°Р¶РґРѕРіРѕ РјРµСЃСЏС†Р°
+            // NFP - первая пятница каждого месяца
             events.push({
                 id: 'nfp_1',
                 time: nextFriday,
@@ -1417,10 +1417,10 @@
                 forecast: '~180K',
                 previous: '151K',
                 actual: null,
-                description: 'NFP - Р·Р°РЅСЏС‚РѕСЃС‚СЊ РІ РЅРµСЃРµР»СЊСЃРєРѕС…РѕР·СЏР№СЃС‚РІРµРЅРЅРѕРј СЃРµРєС‚РѕСЂРµ РЎРЁРђ'
+                description: 'NFP - занятость в несельскохозяйственном секторе США'
             });
 
-            // Р—Р°СЃРµРґР°РЅРёРµ Р¤Р РЎ - РѕСЂРёРµРЅС‚РёСЂРѕРІРѕС‡РЅРѕ РєР°Р¶РґС‹Рµ 6 РЅРµРґРµР»СЊ
+            // Заседание ФРС - ориентировочно каждые 6 недель
             const nextFOMC = getNextFOMC(now);
             events.push({
                 id: 'fomc_1',
@@ -1432,25 +1432,25 @@
                 forecast: '4.50%',
                 previous: '4.50%',
                 actual: null,
-                description: 'Р—Р°СЃРµРґР°РЅРёРµ РљРѕРјРёС‚РµС‚Р° РїРѕ РѕС‚РєСЂС‹С‚С‹Рј СЂС‹РЅРєР°Рј Р¤Р РЎ'
+                description: 'Заседание Комитета по открытым рынкам ФРС'
             });
 
-            // Р‘Р»РёР¶Р°Р№С€РµРµ Р·Р°СЃРµРґР°РЅРёРµ Р¦Р‘ Р Р¤
+            // Ближайшее заседание ЦБ РФ
             const nextCBR = getNextCBR(now);
             events.push({
                 id: 'cbr_1',
                 time: nextCBR,
                 country: 'RU',
                 currency: 'RUB',
-                name: 'РљР»СЋС‡РµРІР°СЏ СЃС‚Р°РІРєР° Р¦Р‘ Р Р¤',
+                name: 'Ключевая ставка ЦБ РФ',
                 impact: 'high',
                 forecast: '21.00%',
                 previous: '21.00%',
                 actual: null,
-                description: 'Р РµС€РµРЅРёРµ РїРѕ РєР»СЋС‡РµРІРѕР№ СЃС‚Р°РІРєРµ Р‘Р°РЅРєР° Р РѕСЃСЃРёРё'
+                description: 'Решение по ключевой ставке Банка России'
             });
 
-            // CPI РЎРЁРђ - РѕР±С‹С‡РЅРѕ 10-15 С‡РёСЃР»Р° РєР°Р¶РґРѕРіРѕ РјРµСЃСЏС†Р°
+            // CPI США - обычно 10-15 числа каждого месяца
             const nextCPI = getNextCPI(now);
             if (nextCPI) {
                 events.push({
@@ -1458,16 +1458,16 @@
                     time: nextCPI,
                     country: 'US',
                     currency: 'USD',
-                    name: 'CPI РЎРЁРђ (Рј/Рј)',
+                    name: 'CPI США (м/м)',
                     impact: 'high',
                     forecast: '0.3%',
                     previous: '0.4%',
                     actual: null,
-                    description: 'РРЅРґРµРєСЃ РїРѕС‚СЂРµР±РёС‚РµР»СЊСЃРєРёС… С†РµРЅ РЎРЁРђ'
+                    description: 'Индекс потребительских цен США'
                 });
             }
 
-            // Retail Sales - РѕР±С‹С‡РЅРѕ 15-17 С‡РёСЃР»Р°
+            // Retail Sales - обычно 15-17 числа
             const nextRetail = getNextRetail(now);
             if (nextRetail) {
                 events.push({
@@ -1480,26 +1480,26 @@
                     forecast: '0.4%',
                     previous: '0.2%',
                     actual: null,
-                    description: 'Р РѕР·РЅРёС‡РЅС‹Рµ РїСЂРѕРґР°Р¶Рё РІ РЎРЁРђ'
+                    description: 'Розничные продажи в США'
                 });
             }
 
-            // PMI Manufacturing Р Р¤ - РїРµСЂРІС‹Р№ СЂР°Р±РѕС‡РёР№ РґРµРЅСЊ РјРµСЃСЏС†Р°
+            // PMI Manufacturing РФ - первый рабочий день месяца
             const nextRU_PMI = getNextMonthStart(now);
             events.push({
                 id: 'pmi_ru',
                 time: nextRU_PMI,
                 country: 'RU',
                 currency: 'RUB',
-                name: 'PMI РџСЂРѕРёР·РІРѕРґСЃС‚РІРµРЅРЅС‹Р№ Р Р¤',
+                name: 'PMI Производственный РФ',
                 impact: 'medium',
                 forecast: '52.0',
                 previous: '53.1',
                 actual: null,
-                description: 'РРЅРґРµРєСЃ РґРµР»РѕРІРѕР№ Р°РєС‚РёРІРЅРѕСЃС‚Рё РІ РїСЂРѕРёР·РІРѕРґСЃС‚РІРµРЅРЅРѕРј СЃРµРєС‚РѕСЂРµ Р Р¤'
+                description: 'Индекс деловой активности в производственном секторе РФ'
             });
 
-            // РќРµРґРµР»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ РїРѕ jobless claims (С‡РµС‚РІРµСЂРі)
+            // Недельные данные по jobless claims (четверг)
             const nextJobless = getNextThursday(now);
             events.push({
                 id: 'jobless',
@@ -1511,10 +1511,10 @@
                 forecast: '220K',
                 previous: '221K',
                 actual: null,
-                description: 'РџРµСЂРІРёС‡РЅС‹Рµ Р·Р°СЏРІРєРё РЅР° РїРѕСЃРѕР±РёРµ РїРѕ Р±РµР·СЂР°Р±РѕС‚РёС†Рµ'
+                description: 'Первичные заявки на пособие по безработице'
             });
 
-            // РЎРѕСЂС‚РёСЂСѓРµРј РїРѕ РґР°С‚Рµ
+            // Сортируем по дате
             events.sort((a, b) => a.time - b.time);
 
             return events;
@@ -1525,7 +1525,7 @@
             const dayOfWeek = result.getDay();
             const daysUntilFriday = dayOfWeek === 5 ? 7 : (5 - dayOfWeek + 7) % 7 || 7;
             result.setDate(result.getDate() + daysUntilFriday);
-            result.setHours(15, 30, 0, 0); // 15:30 РњРЎРљ (8:30 EST)
+            result.setHours(15, 30, 0, 0); // 15:30 МСК (8:30 EST)
             return result;
         }
 
@@ -1539,17 +1539,17 @@
         }
 
         function getNextFOMC(date) {
-            // РћСЂРёРµРЅС‚РёСЂРѕРІРѕС‡РЅРѕ - РЅСѓР¶РЅРѕ СѓС‚РѕС‡РЅСЏС‚СЊ РЅР° СЃР°Р№С‚Рµ Р¤Р РЎ
+            // Ориентировочно - нужно уточнять на сайте ФРС
             const result = new Date(date);
-            result.setDate(result.getDate() + 42); // ~6 РЅРµРґРµР»СЊ
+            result.setDate(result.getDate() + 42); // ~6 недель
             result.setHours(21, 0, 0, 0);
             return result;
         }
 
         function getNextCBR(date) {
-            // Р‘Р»РёР¶Р°Р№С€РµРµ Р·Р°СЃРµРґР°РЅРёРµ Р¦Р‘ Р Р¤ - РѕСЂРёРµРЅС‚РёСЂРѕРІРѕС‡РЅРѕ СЂР°Р· РІ РјРµСЃСЏС†
+            // Ближайшее заседание ЦБ РФ - ориентировочно раз в месяц
             const result = new Date(date);
-            result.setDate(result.getDate() + 14); // ~2 РЅРµРґРµР»Рё
+            result.setDate(result.getDate() + 14); // ~2 недели
             result.setHours(13, 30, 0, 0);
             return result;
         }
@@ -1594,18 +1594,18 @@
             return result;
         }
 
-        // РћСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ Р·Р°РіСЂСѓР·РєРё РєР°Р»РµРЅРґР°СЂСЏ
+        // Основная функция загрузки календаря
         async function fetchEconomicCalendar() {
             const container = document.getElementById('calendarList');
-            container.innerHTML = '<div style="text-align: center; color: #8b949e; padding: 20px;">вЏі Р—Р°РіСЂСѓР·РєР° РєР°Р»РµРЅРґР°СЂСЏ...</div>';
+            container.innerHTML = '<div style="text-align: center; color: #8b949e; padding: 20px;">⏳ Загрузка календаря...</div>';
 
             try {
-                // РџСЂРѕР±СѓРµРј Р·Р°РіСЂСѓР·РёС‚СЊ СЃ Р±РµСЃРїР»Р°С‚РЅРѕРіРѕ API
+                // Пробуем загрузить с бесплатного API
                 const events = await fetchFromFreeCalendarAPI();
                 if (events && events.length > 0) {
                     allCalendarEvents = events;
                 } else {
-                    // Fallback РЅР° РёР·РІРµСЃС‚РЅС‹Рµ СЃРѕР±С‹С‚РёСЏ
+                    // Fallback на известные события
                     allCalendarEvents = generateUpcomingEvents();
                 }
             } catch (e) {
@@ -1617,11 +1617,11 @@
             updateCalendarInfluence(allCalendarEvents);
         }
 
-        // РџРѕРїС‹С‚РєР° Р·Р°РіСЂСѓР·РёС‚СЊ СЃ Р±РµСЃРїР»Р°С‚РЅРѕРіРѕ API
+        // Попытка загрузить с бесплатного API
         async function fetchFromFreeCalendarAPI() {
-            // РџСЂРѕР±СѓРµРј РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Alpha Vantage (Р±РµСЃРїР»Р°С‚РЅС‹Р№ tier)
-            // РџСЂРёРјРµС‡Р°РЅРёРµ: С‚СЂРµР±СѓРµС‚ API РєР»СЋС‡Р°, РЅРѕ РјРѕР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РґРµРјРѕ
-            // Р—РґРµСЃСЊ РёСЃРїРѕР»СЊР·СѓРµРј Known Events РєР°Рє РѕСЃРЅРѕРІРЅРѕР№ РёСЃС‚РѕС‡РЅРёРє
+            // Пробуем использовать Alpha Vantage (бесплатный tier)
+            // Примечание: требует API ключа, но можно использовать демо
+            // Здесь используем Known Events как основной источник
             return null;
         }
 
@@ -1630,7 +1630,7 @@
             document.getElementById('calendarCount').textContent = events.length;
 
             if (events.length === 0) {
-                container.innerHTML = '<div style="text-align: center; color: #8b949e; padding: 20px;">РќРµС‚ СЃРѕР±С‹С‚РёР№</div>';
+                container.innerHTML = '<div style="text-align: center; color: #8b949e; padding: 20px;">Нет событий</div>';
                 return;
             }
 
@@ -1642,7 +1642,7 @@
                     minute: '2-digit'
                 });
 
-                const countryFlag = event.country === 'RU' ? 'рџ‡·рџ‡є' : 'рџ‡єрџ‡ё';
+                const countryFlag = event.country === 'RU' ? '🇷🇺' : '🇺🇸';
 
                 return `
                     <div class="calendar-item ${event.impact}">
@@ -1653,17 +1653,17 @@
                         <div class="calendar-event">${event.name}</div>
                         <div class="calendar-values">
                             <div class="calendar-value">
-                                <span class="calendar-value-label">РџСЂРѕРіРЅРѕР·</span>
+                                <span class="calendar-value-label">Прогноз</span>
                                 <span class="calendar-value-num">${event.forecast}</span>
                             </div>
                             <div class="calendar-value">
-                                <span class="calendar-value-label">РџСЂРµРґС‹РґСѓС‰РµРµ</span>
+                                <span class="calendar-value-label">Предыдущее</span>
                                 <span class="calendar-value-num">${event.previous}</span>
                             </div>
                         </div>
                         <span class="calendar-impact impact-${event.impact}">${
-                            event.impact === 'high' ? 'Р’Р«РЎРћРљРћР• Р’Р›РРЇРќРР•' :
-                            event.impact === 'medium' ? 'РЎР Р•Р”РќР•Р• Р’Р›РРЇРќРР•' : 'РќРР—РљРћР• Р’Р›РРЇРќРР•'
+                            event.impact === 'high' ? 'ВЫСОКОЕ ВЛИЯНИЕ' :
+                            event.impact === 'medium' ? 'СРЕДНЕЕ ВЛИЯНИЕ' : 'НИЗКОЕ ВЛИЯНИЕ'
                         }</span>
                     </div>
                 `;
@@ -1675,7 +1675,7 @@
             let score = 0;
             let relevantEvents = [];
 
-            // РЎРјРѕС‚СЂРёРј РЅР° СЃРѕР±С‹С‚РёСЏ Р±Р»РёР¶Р°Р№С€РёС… 24 С‡Р°СЃРѕРІ
+            // Смотрим на события ближайших 24 часов
             events.forEach(event => {
                 const hoursDiff = (event.time - now) / (1000 * 60 * 60);
 
@@ -1683,15 +1683,15 @@
                     let eventScore = 0;
                     const impactWeight = event.impact === 'high' ? 30 : event.impact === 'medium' ? 15 : 5;
 
-                    // Р”Р»СЏ СЂСѓР±Р»С‘РІС‹С… РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ СЃРѕР±С‹С‚РёСЏ Р Р¤ РІР°Р¶РЅРµРµ
+                    // Для рублёвых инструментов события РФ важнее
                     if (event.currency === 'RUB') {
                         eventScore = impactWeight;
                     } else if (event.currency === 'USD') {
-                        // USD СЃРѕР±С‹С‚РёСЏ РІР»РёСЏСЋС‚ С‡РµСЂРµР· РєСѓСЂСЃ РґРѕР»Р»Р°СЂР°
+                        // USD события влияют через курс доллара
                         eventScore = impactWeight * 0.7;
                     }
 
-                    // Р‘Р»РёР¶Р°Р№С€РёРµ СЃРѕР±С‹С‚РёСЏ РІР°Р¶РЅРµРµ
+                    // Ближайшие события важнее
                     if (hoursDiff <= 2) eventScore *= 1.5;
                     else if (hoursDiff <= 6) eventScore *= 1.2;
 
@@ -1703,11 +1703,11 @@
                 }
             });
 
-            // РћРїСЂРµРґРµР»СЏРµРј РЅР°РїСЂР°РІР»РµРЅРёРµ РЅР° РѕСЃРЅРѕРІРµ С‚РёРїРѕРІ СЃРѕР±С‹С‚РёР№
+            // Определяем направление на основе типов событий
             relevantEvents.forEach(event => {
-                if (event.name.includes('Rate') || event.name.includes('СЃС‚Р°РІРєР°')) {
-                    // РЎС‚Р°РІРєРё - РѕСЃРѕР±С‹Р№ СЃР»СѓС‡Р°Р№
-                    score += event.score * 0.5; // РќРµР№С‚СЂР°Р»СЊРЅРѕ РґРѕ РїСѓР±Р»РёРєР°С†РёРё
+                if (event.name.includes('Rate') || event.name.includes('ставка')) {
+                    // Ставки - особый случай
+                    score += event.score * 0.5; // Нейтрально до публикации
                 } else {
                     score += event.score * 0.3;
                 }
@@ -1749,42 +1749,42 @@
         }
 
         // ============================================
-        // РќРћР’РћРЎРўРќРћР™ Р¤РћРќ (Р Р•РђР›Р¬РќР«Р• Р”РђРќРќР«Р•)
+        // НОВОСТНОЙ ФОН (РЕАЛЬНЫЕ ДАННЫЕ)
         // ============================================
 
-        // RSS С„РёРґС‹ РґР»СЏ СЂРѕСЃСЃРёР№СЃРєРёС… РЅРѕРІРѕСЃС‚РµР№
+        // RSS фиды для российских новостей
         const RSS_FEEDS = [
-            'https://ru.investing.com/rss/news_25.rss',  // Р РѕСЃСЃРёСЏ
-            'https://lenta.ru/rss/news',                  // Р›РµРЅС‚Р°.СЂСѓ
-            'https://www.vedomosti.ru/rss/articles'        // Р’РµРґРѕРјРѕСЃС‚Рё
+            'https://ru.investing.com/rss/news_25.rss',  // Россия
+            'https://lenta.ru/rss/news',                  // Лента.ру
+            'https://www.vedomosti.ru/rss/articles'        // Ведомости
         ];
 
-        // РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° РґР»СЏ Р°РЅР°Р»РёР·Р° РЅР°СЃС‚СЂРѕРµРЅРёР№ (РґР»СЏ Si - СЂСѓР±Р»СЊ/РґРѕР»Р»Р°СЂ)
+        // Ключевые слова для анализа настроений (для Si - рубль/доллар)
         const KEYWORDS = {
-            // Р‘С‹С‡СЊРё РґР»СЏ Si (СЂСѓР±Р»СЊ СЃР»Р°Р±РµРµС‚ = С†РµРЅР° СЂР°СЃС‚С‘С‚)
+            // Бычьи для Si (рубль слабеет = цена растёт)
             bullish: [
-                'СЃР°РЅРєС†РёРё', 'РёРЅС„Р»СЏС†РёСЏ', 'СЃС‚Р°РІРєР°', 'РєР»СЋС‡РµРІР°СЏ СЃС‚Р°РІРєР°', 'РїРѕРІС‹С€РµРЅРёРµ СЃС‚Р°РІРєРё',
-                'РЅРµС„С‚СЊ', 'РЅРµС„С‚СЊ РїР°РґР°РµС‚', 'brent', 'РєСЂРёР·РёСЃ', 'РІРѕР№РЅР°', 'СѓРєСЂР°РёРЅР°',
-                'РґРµС„РёС†РёС‚', 'СЂРµС†РµСЃСЃРёСЏ', 'РґРѕР»Р»Р°СЂ СЂР°СЃС‚РµС‚', 'РґРѕР»Р»Р°СЂ СѓРєСЂРµРїР»СЏРµС‚СЃСЏ', 'usd',
-                'РјРѕРЅРµС‚Р°СЂРЅР°СЏ РїРѕР»РёС‚РёРєР°', 'С„СЂСЃ', 'federal reserve', 'tapering',
-                'РѕС‚С‚РѕРє', 'РєР°РїРёС‚Р°Р»Р°', 'РґРµРІР°Р»СЊРІР°С†РёСЏ', 'РѕР±РІР°Р»', 'РїР°РґРµРЅРёРµ СЂСѓР±Р»СЏ'
+                'санкции', 'инфляция', 'ставка', 'ключевая ставка', 'повышение ставки',
+                'нефть', 'нефть падает', 'brent', 'кризис', 'война', 'украина',
+                'дефицит', 'рецессия', 'доллар растет', 'доллар укрепляется', 'usd',
+                'монетарная политика', 'фрс', 'federal reserve', 'tapering',
+                'отток', 'капитала', 'девальвация', 'обвал', 'падение рубля'
             ],
-            // РњРµРґРІРµР¶СЊРё РґР»СЏ Si (СЂСѓР±Р»СЊ СѓРєСЂРµРїР»СЏРµС‚СЃСЏ = С†РµРЅР° РїР°РґР°РµС‚)
+            // Медвежьи для Si (рубль укрепляется = цена падает)
             bearish: [
-                'РЅРµС„С‚СЊ СЂР°СЃС‚РµС‚', 'РЅРµС„С‚СЊ РґРѕСЂРѕР¶Р°РµС‚', 'brent СЂР°СЃС‚РµС‚', ' Р±СЋРґР¶РµС‚',
-                'РїСЂРѕС„РёС†РёС‚', 'СЌРєСЃРїРѕСЂС‚', 'РїСЂРѕРґР°Р¶Р° РІР°Р»СЋС‚С‹', 'РІР°Р»СЋС‚Р°', 'Р¦Р‘',
-                'С†РµРЅС‚СЂР°Р»СЊРЅС‹Р№ Р±Р°РЅРє', 'СЃРЅРёР¶РµРЅРёРµ СЃС‚Р°РІРєРё', 'РїРѕРЅРёР¶РµРЅРёРµ СЃС‚Р°РІРєРё',
-                'РЅР°Р»РѕРіРѕРІС‹Р№', 'РЅР°Р»РѕРіРё', 'РїРµСЂРёРѕРґ', 'РјРёРЅС„РёРЅ',
-                'РїСЂРёС‚РѕРє', 'СЂРµР·РµСЂРІС‹', 'Р·РІ', 'РјРІС„', 'СЌРєРѕРЅРѕРјРёРєР° СЂР°СЃС‚РµС‚',
-                'СЂСѓР±Р»СЊ СѓРєСЂРµРїР»СЏРµС‚СЃСЏ', 'СЂСѓР±Р»СЊ СЂР°СЃС‚РµС‚', 'ruble'
+                'нефть растет', 'нефть дорожает', 'brent растет', ' бюджет',
+                'профицит', 'экспорт', 'продажа валюты', 'валюта', 'ЦБ',
+                'центральный банк', 'снижение ставки', 'понижение ставки',
+                'налоговый', 'налоги', 'период', 'минфин',
+                'приток', 'резервы', 'зв', 'мвф', 'экономика растет',
+                'рубль укрепляется', 'рубль растет', 'ruble'
             ]
         };
 
-        // РћРїСЂРµРґРµР»РµРЅРёРµ РІР°Р¶РЅРѕСЃС‚Рё РЅРѕРІРѕСЃС‚Рё
+        // Определение важности новости
         function getNewsImpact(title, description) {
             const text = (title + ' ' + (description || '')).toLowerCase();
-            const highImpact = ['СЃР°РЅРєС†РёРё', 'РєР»СЋС‡РµРІР°СЏ СЃС‚Р°РІРєР°', 'С†Р± СЂС„', 'С„СЂСЃ', 'federal reserve', 'РЅРµС„С‚СЊ', 'brent', 'РёРЅС„Р»СЏС†РёСЏ'];
-            const mediumImpact = ['СЂСѓР±Р»СЊ', 'РґРѕР»Р»Р°СЂ', 'СЌРєРѕРЅРѕРјРёРєР°', 'Р±РёСЂР¶Р°', 'РјРјРІР±', 'СЂС‹РЅРѕРє'];
+            const highImpact = ['санкции', 'ключевая ставка', 'цб рф', 'фрс', 'federal reserve', 'нефть', 'brent', 'инфляция'];
+            const mediumImpact = ['рубль', 'доллар', 'экономика', 'биржа', 'ммвб', 'рынок'];
 
             for (const word of highImpact) {
                 if (text.includes(word)) return 'high';
@@ -1795,7 +1795,7 @@
             return 'low';
         }
 
-        // РћРїСЂРµРґРµР»РµРЅРёРµ РЅР°СЃС‚СЂРѕРµРЅРёСЏ РЅРѕРІРѕСЃС‚Рё
+        // Определение настроения новости
         function getNewsSentiment(title, description) {
             const text = ((title || '') + ' ' + (description || '')).toLowerCase();
 
@@ -1816,7 +1816,7 @@
 
         async function fetchNews() {
             const container = document.getElementById('newsList');
-            container.innerHTML = '<div style="text-align: center; color: #8b949e; padding: 20px;">вЏі Р—Р°РіСЂСѓР·РєР° РЅРѕРІРѕСЃС‚РµР№...</div>';
+            container.innerHTML = '<div style="text-align: center; color: #8b949e; padding: 20px;">⏳ Загрузка новостей...</div>';
 
             const allFetchedNews = [];
 
@@ -1829,7 +1829,7 @@
                 }
             }
 
-            // Р•СЃР»Рё РЅРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ - РёСЃРїРѕР»СЊР·СѓРµРј fallback
+            // Если не удалось загрузить - используем fallback
             if (allFetchedNews.length === 0) {
                 console.log('Using fallback news');
                 const news = generateFallbackNews();
@@ -1839,14 +1839,14 @@
                 return;
             }
 
-            // РЎРѕСЂС‚РёСЂСѓРµРј РїРѕ РІСЂРµРјРµРЅРё (СЃРІРµР¶РёРµ first)
+            // Сортируем по времени (свежие first)
             allFetchedNews.sort((a, b) => b.time - a.time);
 
-            // РћСЃС‚Р°РІР»СЏРµРј С‚РѕР»СЊРєРѕ РїРѕСЃР»РµРґРЅРёРµ 24 С‡Р°СЃР°
+            // Оставляем только последние 24 часа
             const now = new Date();
             const filteredNews = allFetchedNews.filter(n => {
                 const hoursDiff = (now - n.time) / (1000 * 60 * 60);
-                return hoursDiff <= 48; // 48 С‡Р°СЃРѕРІ РґР»СЏ РЅР°РґРµР¶РЅРѕСЃС‚Рё
+                return hoursDiff <= 48; // 48 часов для надежности
             });
 
             allNews = filteredNews;
@@ -1873,7 +1873,7 @@
                 const title = item.title || '';
                 const description = item.description || '';
 
-                // РћРїСЂРµРґРµР»СЏРµРј РІР°Р¶РЅРѕСЃС‚СЊ Рё РЅР°СЃС‚СЂРѕРµРЅРёРµ
+                // Определяем важность и настроение
                 const impact = getNewsImpact(title, description);
                 const sentiment = getNewsSentiment(title, description);
 
@@ -1893,18 +1893,18 @@
 
         function generateFallbackNews() {
             const now = new Date();
-            // Fallback С‚РѕР»СЊРєРѕ РµСЃР»Рё API РЅРµРґРѕСЃС‚СѓРїРЅС‹ - СѓРїСЂРѕС‰РµРЅРЅС‹Рµ С€Р°Р±Р»РѕРЅС‹
+            // Fallback только если API недоступны - упрощенные шаблоны
             const templates = [
-                { title: 'Р¦Р‘ Р Р¤: РјРѕРЅРёС‚РѕСЂРёРЅРі РєР»СЋС‡РµРІРѕР№ СЃС‚Р°РІРєРё', sentiment: 'neutral', impact: 'high' },
-                { title: 'РљСѓСЂСЃ РґРѕР»Р»Р°СЂР° РЅР° РњРњР’Р‘', sentiment: 'neutral', impact: 'medium' },
-                { title: 'Р¦РµРЅС‹ РЅР° РЅРµС„С‚СЊ Brent', sentiment: 'bearish', impact: 'high' }
+                { title: 'ЦБ РФ: мониторинг ключевой ставки', sentiment: 'neutral', impact: 'high' },
+                { title: 'Курс доллара на ММВБ', sentiment: 'neutral', impact: 'medium' },
+                { title: 'Цены на нефть Brent', sentiment: 'bearish', impact: 'high' }
             ];
 
             return templates.map((item, i) => ({
                 id: i,
                 time: new Date(now.getTime() - i * 3600000),
                 title: item.title,
-                text: 'Р”Р°РЅРЅС‹Рµ РІСЂРµРјРµРЅРЅРѕ РЅРµРґРѕСЃС‚СѓРїРЅС‹',
+                text: 'Данные временно недоступны',
                 impact: item.impact,
                 sentiment: item.sentiment
             }));
@@ -1915,7 +1915,7 @@
             document.getElementById('newsCount').textContent = news.length;
 
             if (news.length === 0) {
-                container.innerHTML = '<div style="text-align: center; color: #8b949e; padding: 20px;">РќРµС‚ РЅРѕРІРѕСЃС‚РµР№</div>';
+                container.innerHTML = '<div style="text-align: center; color: #8b949e; padding: 20px;">Нет новостей</div>';
                 return;
             }
 
@@ -1928,9 +1928,9 @@
                 });
 
                 const sentimentLabel = {
-                    'bullish': 'рџ“‰ РњРµРґРІРµР¶СЊСЏ РґР»СЏ Si',
-                    'bearish': 'рџ“€ Р‘С‹С‡СЊСЏ РґР»СЏ Si',
-                    'neutral': 'вћЎпёЏ РќРµР№С‚СЂР°Р»СЊРЅР°СЏ'
+                    'bullish': '📉 Медвежья для Si',
+                    'bearish': '📈 Бычья для Si',
+                    'neutral': '➡️ Нейтральная'
                 };
 
                 return `
@@ -1954,13 +1954,13 @@
                 const hoursDiff = (now - item.time) / (1000 * 60 * 60);
                 const impactWeight = item.impact === 'high' ? 30 : item.impact === 'medium' ? 15 : 5;
 
-                // РЎРІРµР¶РёРµ РЅРѕРІРѕСЃС‚Рё РІР°Р¶РЅРµРµ
+                // Свежие новости важнее
                 const recencyMultiplier = Math.max(0.1, 1 - hoursDiff / 48);
 
                 const score = impactWeight * recencyMultiplier;
 
-                // Р”Р»СЏ Si: bullish sentiment = С†РµРЅР° СЂР°СЃС‚С‘С‚ (СЂСѓР±Р»СЊ СЃР»Р°Р±РµРµС‚)
-                // bearish sentiment = С†РµРЅР° РїР°РґР°РµС‚ (СЂСѓР±Р»СЊ СѓРєСЂРµРїР»СЏРµС‚СЃСЏ)
+                // Для Si: bullish sentiment = цена растёт (рубль слабеет)
+                // bearish sentiment = цена падает (рубль укрепляется)
                 if (item.sentiment === 'bullish') {
                     bullishScore += score;
                 } else if (item.sentiment === 'bearish') {
@@ -1968,7 +1968,7 @@
                 }
             });
 
-            // РС‚РѕРіРѕРІС‹Р№ СЃС‡С‘С‚: РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№ = Р±С‹С‡РёР№ РґР»СЏ Si, РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№ = РјРµРґРІРµР¶РёР№
+            // Итоговый счёт: положительный = бычий для Si, отрицательный = медвежий
             const netScore = bullishScore - bearishScore;
             analysisState.news.score = netScore;
             analysisState.news.direction = netScore > 10 ? 'bullish' : netScore < -10 ? 'bearish' : 'neutral';
@@ -2003,10 +2003,10 @@
         }
 
         // ============================================
-        // РћР‘РќРћР’Р›Р•РќРР• UI Р’Р›РРЇРќРРЇ
+        // ОБНОВЛЕНИЕ UI ВЛИЯНИЯ
         // ============================================
         function updateInfluenceUI() {
-            // РўРµС…РЅРёС‡РµСЃРєРёР№ Р°РЅР°Р»РёР·
+            // Технический анализ
             const techScore = analysisState.technical.score;
             const techBar = document.getElementById('techBar');
             const techScoreEl = document.getElementById('techScore');
@@ -2016,7 +2016,7 @@
             techScoreEl.textContent = techScore > 0 ? '+' + Math.round(techScore) : Math.round(techScore);
             techScoreEl.className = 'influence-value ' + (techScore > 10 ? 'positive' : techScore < -10 ? 'negative' : '');
 
-            // РќРѕРІРѕСЃС‚Рё
+            // Новости
             const newsScore = analysisState.news.score;
             const newsBar = document.getElementById('newsBar');
             const newsScoreEl = document.getElementById('newsScore');
@@ -2026,7 +2026,7 @@
             newsScoreEl.textContent = newsScore > 0 ? '+' + Math.round(newsScore) : Math.round(newsScore);
             newsScoreEl.className = 'influence-value ' + (newsScore > 10 ? 'positive' : newsScore < -10 ? 'negative' : '');
 
-            // РљР°Р»РµРЅРґР°СЂСЊ
+            // Календарь
             const calendarScore = analysisState.calendar.score;
             const calendarBar = document.getElementById('calendarBar');
             const calendarScoreEl = document.getElementById('calendarScore');
@@ -2035,7 +2035,7 @@
             calendarBar.className = 'influence-fill neutral';
             calendarScoreEl.textContent = Math.round(calendarScore);
 
-            // РС‚РѕРіРѕ (РІР·РІРµС€РµРЅРЅР°СЏ СЃСѓРјРјР°)
+            // Итого (взвешенная сумма)
             const totalScore = techScore * 0.5 + newsScore * 0.35 + (calendarScore > 30 ? 15 : 0);
             const totalBar = document.getElementById('totalBar');
             const totalScoreEl = document.getElementById('totalScore');
@@ -2050,36 +2050,36 @@
         }
 
         // ============================================
-        // РљРћРњРџР›Р•РљРЎРќР«Р™ РђРќРђР›РР— РЎ РР
+        // КОМПЛЕКСНЫЙ АНАЛИЗ С ИИ
         // ============================================
         async function runComplexAnalysis() {
             const apiKey = document.getElementById('api_key_input').value.trim();
             if (!apiKey) {
-                alert("Р’РІРµРґРёС‚Рµ API-РєР»СЋС‡ OpenRouter");
+                alert("Введите API-ключ OpenRouter");
                 return;
             }
             if (!historyData?.length) {
-                alert("РќРµС‚ РґР°РЅРЅС‹С… РґР»СЏ Р°РЅР°Р»РёР·Р°");
+                alert("Нет данных для анализа");
                 return;
             }
 
-            document.getElementById('signal_text').innerText = "РђРќРђР›РР—...";
+            document.getElementById('signal_text').innerText = "АНАЛИЗ...";
             document.getElementById('signal_confidence').innerText = "";
 
-            // 1. РћР±РЅРѕРІР»СЏРµРј С‚РµС…РЅРёС‡РµСЃРєРёР№ Р°РЅР°Р»РёР·
+            // 1. Обновляем технический анализ
             const techAnalysis = calculateTechnicalAnalysis(historyData);
             analysisState.technical = techAnalysis;
             updateInfluenceUI();
 
-            // РћР±РЅРѕРІР»СЏРµРј СЃС‚Р°С‚РёСЃС‚РёРєСѓ
+            // Обновляем статистику
             document.getElementById('statsGrid').style.display = 'grid';
             document.getElementById('statRsi').innerText = techAnalysis.rsi?.toFixed(1) || '-';
             document.getElementById('statMacd').innerText = techAnalysis.macd?.histogram?.slice(-1)[0]?.toFixed(2) || '-';
             document.getElementById('statEma').innerText = `${techAnalysis.ema20?.toFixed(0) || '-'}/${techAnalysis.ema50?.toFixed(0) || '-'}`;
-            document.getElementById('statTrend').innerText = techAnalysis.direction === 'bullish' ? 'в†‘ Р’РѕСЃС…РѕРґСЏС‰РёР№' : 
-                techAnalysis.direction === 'bearish' ? 'в†“ РќРёСЃС…РѕРґСЏС‰РёР№' : 'в†’ Р‘РѕРєРѕРІРёРє';
+            document.getElementById('statTrend').innerText = techAnalysis.direction === 'bullish' ? '↑ Восходящий' : 
+                techAnalysis.direction === 'bearish' ? '↓ Нисходящий' : '→ Боковик';
 
-            // 2. Р¤РѕСЂРјРёСЂСѓРµРј РєРѕРЅС‚РµРєСЃС‚ РґР»СЏ РР
+            // 2. Формируем контекст для ИИ
             const currentPrice = historyData[historyData.length - 1].close;
             const recentData = historyData.slice(-20);
 
@@ -2112,39 +2112,39 @@
                 model: "deepseek/deepseek-chat",
                 messages: [{
                     role: "user",
-                    content: `РўС‹ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ С‚СЂРµР№РґРµСЂ С„СЊСЋС‡РµСЂСЃР°РјРё РЅР° СЂСѓР±Р»СЊ/РґРѕР»Р»Р°СЂ (Si).
-РџСЂРѕР°РЅР°Р»РёР·РёСЂСѓР№ РґР°РЅРЅС‹Рµ Рё РґР°Р№ С‚РѕСЂРіРѕРІС‹Р№ СЃРёРіРЅР°Р».
+                    content: `Ты профессиональный трейдер фьючерсами на рубль/доллар (Si).
+Проанализируй данные и дай торговый сигнал.
 
-РљРћРќРўР•РљРЎРў:
-- РРЅСЃС‚СЂСѓРјРµРЅС‚: ${TICKER}
-- РўРµРєСѓС‰Р°СЏ С†РµРЅР°: ${currentPrice}
-- РўР°Р№РјС„СЂРµР№Рј: ${currentTf} РјРёРЅ
+КОНТЕКСТ:
+- Инструмент: ${TICKER}
+- Текущая цена: ${currentPrice}
+- Таймфрейм: ${currentTf} мин
 
-РўР•РҐРќРР§Р•РЎРљРР™ РђРќРђР›РР— (РѕС†РµРЅРєР°: ${context.technical.score}):
+ТЕХНИЧЕСКИЙ АНАЛИЗ (оценка: ${context.technical.score}):
 - RSI(14): ${context.technical.rsi?.toFixed(1)}
 - MACD histogram: ${JSON.stringify(context.technical.macd)}
 - EMA20: ${context.technical.ema20?.toFixed(2)}, EMA50: ${context.technical.ema50?.toFixed(2)}
-- РўСЂРµРЅРґ: ${context.technical.trend}
-- Р¤Р°РєС‚РѕСЂС‹: ${JSON.stringify(context.factors)}
+- Тренд: ${context.technical.trend}
+- Факторы: ${JSON.stringify(context.factors)}
 
-РќРћР’РћРЎРўРќРћР™ Р¤РћРќ:
+НОВОСТНОЙ ФОН:
  ${context.news.map(n => `- ${n.title} (${n.sentiment}, ${n.impact})`).join('\n')}
 
-Р­РљРћРќРћРњРР§Р•РЎРљРР™ РљРђР›Р•РќР”РђР Р¬:
- ${context.calendar.map(e => `- ${e.name} С‡РµСЂРµР· ${e.hoursUntil}С‡ (${e.impact}, ${e.currency})`).join('\n')}
+ЭКОНОМИЧЕСКИЙ КАЛЕНДАРЬ:
+ ${context.calendar.map(e => `- ${e.name} через ${e.hoursUntil}ч (${e.impact}, ${e.currency})`).join('\n')}
 
-Р—РђР”РђР§Рђ:
-1. РЈС‡С‚Рё Р’РЎР• С„Р°РєС‚РѕСЂС‹: С‚РµС…РЅРёС‡РµСЃРєРёРµ, РЅРѕРІРѕСЃС‚Рё, РєР°Р»РµРЅРґР°СЂСЊ
-2. РћРїСЂРµРґРµР»Рё С‚РѕСЂРіРѕРІС‹Р№ СЃРёРіРЅР°Р»
-3. РЈРєР°Р¶Рё СѓРІРµСЂРµРЅРЅРѕСЃС‚СЊ (0-100)
-4. Р”Р°Р№ РєСЂР°С‚РєРѕРµ РѕР±РѕСЃРЅРѕРІР°РЅРёРµ
+ЗАДАЧА:
+1. Учти ВСЕ факторы: технические, новости, календарь
+2. Определи торговый сигнал
+3. Укажи уверенность (0-100)
+4. Дай краткое обоснование
 
-РћС‚РІРµС‚СЊ РўРћР›Р¬РљРћ РІ С„РѕСЂРјР°С‚Рµ JSON:
+Ответь ТОЛЬКО в формате JSON:
 {
-  "signal": "РџРћРљРЈРџРљРђ|РџР РћР”РђР–Рђ|Р”Р•Р Р–РђРўР¬",
-  "confidence": С‡РёСЃР»Рѕ РѕС‚ 0 РґРѕ 100,
-  "reason": "РєСЂР°С‚РєРѕРµ РѕР±РѕСЃРЅРѕРІР°РЅРёРµ СЂРµС€РµРЅРёСЏ (РґРѕ 100 СЃРёРјРІРѕР»РѕРІ)",
-  "factors": ["С„Р°РєС‚РѕСЂ1", "С„Р°РєС‚РѕСЂ2", "С„Р°РєС‚РѕСЂ3"]
+  "signal": "ПОКУПКА|ПРОДАЖА|ДЕРЖАТЬ",
+  "confidence": число от 0 до 100,
+  "reason": "краткое обоснование решения (до 100 символов)",
+  "factors": ["фактор1", "фактор2", "фактор3"]
 }`
                 }]
             };
@@ -2173,54 +2173,54 @@
 
                 const result = parseAIResponse(aiRes.choices[0].message.content);
 
-                // РћР±РЅРѕРІР»СЏРµРј UI СЃРёРіРЅР°Р»Р°
+                // Обновляем UI сигнала
                 const ui = document.getElementById('signal_ui');
                 const stext = document.getElementById('signal_text');
                 const confEl = document.getElementById('signal_confidence');
                 const descEl = document.getElementById('ai_desc');
 
                 ui.className = "signal-display";
-                if (result.signal === "РџРћРљРЈРџРљРђ") {
+                if (result.signal === "ПОКУПКА") {
                     ui.classList.add("buy");
-                    stext.innerText = "РџРћРљРЈРџРљРђ";
-                } else if (result.signal === "РџР РћР”РђР–Рђ") {
+                    stext.innerText = "ПОКУПКА";
+                } else if (result.signal === "ПРОДАЖА") {
                     ui.classList.add("sell");
-                    stext.innerText = "РџР РћР”РђР–Рђ";
+                    stext.innerText = "ПРОДАЖА";
                 } else {
                     ui.classList.add("hold");
-                    stext.innerText = "Р”Р•Р Р–РђРўР¬";
+                    stext.innerText = "ДЕРЖАТЬ";
                 }
 
-                confEl.innerText = `РЈРІРµСЂРµРЅРЅРѕСЃС‚СЊ: ${result.confidence}%`;
+                confEl.innerText = `Уверенность: ${result.confidence}%`;
                 descEl.innerText = result.reason;
 
-                // РџРѕРєР°Р·С‹РІР°РµРј С„Р°РєС‚РѕСЂС‹
+                // Показываем факторы
                 const summaryEl = document.getElementById('analysisSummary');
                 const factorsEl = document.getElementById('analysisFactors');
                 summaryEl.style.display = 'block';
 
                 factorsEl.innerHTML = result.factors?.map(f => `
                     <div class="factor-row">
-                        <span class="factor-icon">вЂў</span>
+                        <span class="factor-icon">•</span>
                         <span class="factor-text">${f}</span>
                     </div>
-                `).join('') || '<div class="factor-row"><span class="factor-text">Р¤Р°РєС‚РѕСЂС‹ РЅРµ РѕРїСЂРµРґРµР»РµРЅС‹</span></div>';
+                `).join('') || '<div class="factor-row"><span class="factor-text">Факторы не определены</span></div>';
 
-                // РћР±СЂР°Р±Р°С‚С‹РІР°РµРј РЅРѕРІС‹Р№ СЃРёРіРЅР°Р»
+                // Обрабатываем новый сигнал
                 const signalChanged = processNewSignal(result.signal, currentPrice, result.reason, result.confidence);
 
             } catch (e) {
                 console.error("AI Analysis Error:", e);
-                document.getElementById('signal_text').innerText = "РћРЁРР‘РљРђ";
+                document.getElementById('signal_text').innerText = "ОШИБКА";
                 document.getElementById('ai_desc').innerText = e.message;
             }
         }
 
         function parseAIResponse(answer) {
             const defaultResult = {
-                signal: "Р”Р•Р Р–РђРўР¬",
+                signal: "ДЕРЖАТЬ",
                 confidence: 50,
-                reason: "РќРµС‚ РґР°РЅРЅС‹С…",
+                reason: "Нет данных",
                 factors: []
             };
 
@@ -2233,11 +2233,11 @@
             } catch (e) {
                 // Fallback parsing
                 const upper = answer.toUpperCase();
-                if (upper.includes("РџРћРљРЈРџРљРђ") || upper.includes("BUY")) {
-                    return { ...defaultResult, signal: "РџРћРљРЈРџРљРђ", reason: answer.substring(0, 100) };
+                if (upper.includes("ПОКУПКА") || upper.includes("BUY")) {
+                    return { ...defaultResult, signal: "ПОКУПКА", reason: answer.substring(0, 100) };
                 }
-                if (upper.includes("РџР РћР”РђР–Рђ") || upper.includes("SELL")) {
-                    return { ...defaultResult, signal: "РџР РћР”РђР–Рђ", reason: answer.substring(0, 100) };
+                if (upper.includes("ПРОДАЖА") || upper.includes("SELL")) {
+                    return { ...defaultResult, signal: "ПРОДАЖА", reason: answer.substring(0, 100) };
                 }
             }
 
@@ -2246,7 +2246,7 @@
 
         function processNewSignal(newSignal, price, reason, confidence) {
             if (lastSignal !== newSignal) {
-                console.log(`РЎРёРіРЅР°Р» РёР·РјРµРЅРёР»СЃСЏ: ${lastSignal} в†’ ${newSignal}`);
+                console.log(`Сигнал изменился: ${lastSignal} → ${newSignal}`);
                 showNotification(newSignal, price, reason, confidence);
                 lastSignal = newSignal;
                 return true;
@@ -2274,7 +2274,7 @@
             const interval = tfMap[timeframe];
 
             if (!interval) {
-                loadingEl.innerHTML = 'вќЊ РќРµРїРѕРґРґРµСЂР¶РёРІР°РµРјС‹Р№ С‚Р°Р№РјС„СЂРµР№Рј';
+                loadingEl.innerHTML = '❌ Неподдерживаемый таймфрейм';
                 return;
             }
 
@@ -2298,7 +2298,7 @@
                 const data = await response.json();
 
                 if (!data.candles?.data?.length) {
-                    throw new Error('РќРµС‚ РґР°РЅРЅС‹С…');
+                    throw new Error('Нет данных');
                 }
 
                 const columns = data.candles.columns;
@@ -2336,7 +2336,7 @@
                         updatePriceTicker(historyData);
                         updateLastUpdateTime();
 
-                        // РћР±РЅРѕРІР»СЏРµРј С‚РµС…РЅРёС‡РµСЃРєРёР№ Р°РЅР°Р»РёР· РїСЂРё РЅРѕРІС‹С… РґР°РЅРЅС‹С…
+                        // Обновляем технический анализ при новых данных
                         const techAnalysis = calculateTechnicalAnalysis(historyData);
                         analysisState.technical = techAnalysis;
                         updateInfluenceUI();
@@ -2347,7 +2347,7 @@
 
             } catch (err) {
                 console.error("MOEX Error:", err);
-                if (!isUpdate) loadingEl.innerHTML = `вќЊ РћС€РёР±РєР°: ${err.message}`;
+                if (!isUpdate) loadingEl.innerHTML = `❌ Ошибка: ${err.message}`;
             }
         }
 
@@ -2405,7 +2405,7 @@
 
         function updateLastUpdateTime() {
             document.getElementById('lastUpdate').innerText =
-                `РџРѕСЃР»РµРґРЅРµРµ РѕР±РЅРѕРІР»РµРЅРёРµ: ${new Date().toLocaleTimeString('ru-RU')} (РњРЎРљ)`;
+                `Последнее обновление: ${new Date().toLocaleTimeString('ru-RU')} (МСК)`;
         }
 
         function initTimeframeButtons() {
@@ -2426,7 +2426,7 @@
         }
 
         // ============================================
-        // РќРђРЎРўР РћР™РљР Р РЈРџР РђР’Р›Р•РќРР•
+        // НАСТРОЙКИ И УПРАВЛЕНИЕ
         // ============================================
         function toggleSetting(setting) {
             settings[setting] = !settings[setting];
@@ -2445,11 +2445,11 @@
         }
 
         function testSignal() {
-            const signals = ['РџРћРљРЈРџРљРђ', 'РџР РћР”РђР–Рђ', 'Р”Р•Р Р–РђРўР¬'];
+            const signals = ['ПОКУПКА', 'ПРОДАЖА', 'ДЕРЖАТЬ'];
             const randomSignal = signals[Math.floor(Math.random() * signals.length)];
             const testPrice = 76683 + (Math.random() - 0.5) * 1000;
 
-            showNotification(randomSignal, testPrice, 'РўРµСЃС‚РѕРІС‹Р№ СЃРёРіРЅР°Р» РґР»СЏ РїСЂРѕРІРµСЂРєРё СѓРІРµРґРѕРјР»РµРЅРёР№', 75);
+            showNotification(randomSignal, testPrice, 'Тестовый сигнал для проверки уведомлений', 75);
         }
 
         function startAutoUpdate() {
@@ -2488,18 +2488,18 @@
             const key = document.getElementById('api_key_input').value.trim();
             if (key) localStorage.setItem('si_key', key);
             else localStorage.removeItem('si_key');
-            alert(key ? "РљР»СЋС‡ СЃРѕС…СЂР°РЅС‘РЅ" : "РљР»СЋС‡ СѓРґР°Р»С‘РЅ");
+            alert(key ? "Ключ сохранён" : "Ключ удалён");
         }
 
         function toggleProxy() {
             useProxy = !useProxy;
             const btn = document.getElementById('proxyBtn');
-            btn.innerText = useProxy ? "рџ”Ѓ CORS-РїСЂРѕРєСЃРё: Р’РљР›" : "рџ”Ѓ CORS-РїСЂРѕРєСЃРё: Р’Р«РљР›";
+            btn.innerText = useProxy ? "🔁 CORS-прокси: ВКЛ" : "🔁 CORS-прокси: ВЫКЛ";
             btn.classList.toggle('active', useProxy);
         }
 
         // ============================================
-        // РРќРР¦РРђР›РР—РђР¦РРЇ
+        // ИНИЦИАЛИЗАЦИЯ
         // ============================================
         window.addEventListener('DOMContentLoaded', () => {
             loadSettings();
@@ -2520,11 +2520,487 @@
                 e.target.checked ? startAutoUpdate() : stopAutoUpdate();
             });
 
-            // Р—Р°РїСЂР°С€РёРІР°РµРј СЂР°Р·СЂРµС€РµРЅРёРµ РЅР° СѓРІРµРґРѕРјР»РµРЅРёСЏ
+            // Запрашиваем разрешение на уведомления
             if ("Notification" in window && Notification.permission === "default") {
                 Notification.requestPermission();
             }
         });
     </script>
+
+<script>
+/**
+ * Iframe 元素高亮注入脚本
+ * 需要在目标网站中引入此脚本来支持跨域 iframe 高亮功能
+ *
+ * 使用方法：
+ * 1. 将此脚本添加到目标网站的 HTML 中
+ * 2. 或通过浏览器扩展、用户脚本等方式注入
+ */
+
+(function () {
+  "use strict";
+
+  // 检查是否在 iframe 中
+  if (window.self === window.top) {
+    return; // 不在 iframe 中，不执行
+  }
+
+  // 检查是否已经初始化过
+  if (window.__iframeHighlightInitialized) {
+    return;
+  }
+  window.__iframeHighlightInitialized = true;
+  console.log("Iframe 高亮脚本已加载");
+
+  // 创建高亮覆盖层
+  var overlay = document.createElement("div");
+  overlay.id = "iframe-highlight-overlay";
+  overlay.style.cssText = "\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    height: 100vh;\n    pointer-events: none;\n    z-index: 999999;\n    overflow: hidden;\n  ";
+
+  // 创建悬停高亮框（虚线边框）
+  var highlightBox = document.createElement("div");
+  highlightBox.id = "iframe-highlight-box";
+  highlightBox.style.cssText = "\n    position: absolute;\n    border: 2px dashed #007AFF;\n    background: rgba(0, 122, 255, 0.08);\n    pointer-events: none;\n    display: none;\n    transition: all 0.1s ease;\n    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8);\n    border-radius: 2px;\n  ";
+
+  // 创建选中节点的常驻高亮框（实线边框）
+  var selectedBox = document.createElement("div");
+  selectedBox.id = "iframe-selected-box";
+  selectedBox.style.cssText = "\n    position: absolute;\n    border: 2px solid #007AFF;\n    pointer-events: none;\n    display: none;\n    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 107, 53, 0.4);\n    border-radius: 2px;\n    z-index: 1000000;\n  ";
+
+  // 创建悬停标签显示
+  var tagLabel = document.createElement("div");
+  tagLabel.id = "iframe-tag-label";
+  tagLabel.style.cssText = "\n    position: absolute;\n    background: #007AFF;\n    color: white;\n    padding: 2px 6px;\n    font-size: 11px;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\n    border-radius: 2px;\n    pointer-events: none;\n    display: none;\n    white-space: nowrap;\n    z-index: 1000001;\n    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);\n    font-weight: 500;\n  ";
+
+  // 创建选中节点标签
+  var selectedLabel = document.createElement("div");
+  selectedLabel.id = "iframe-selected-label";
+  selectedLabel.style.cssText = "\n    position: absolute;\n    background: #007AFF;\n    color: white;\n    padding: 3px 8px;\n    font-size: 11px;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\n    border-radius: 3px;\n    pointer-events: none;\n    display: none;\n    white-space: nowrap;\n    z-index: 1000002;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);\n    font-weight: 600;\n  ";
+  overlay.appendChild(highlightBox);
+  overlay.appendChild(selectedBox);
+  overlay.appendChild(tagLabel);
+  overlay.appendChild(selectedLabel);
+  document.body.appendChild(overlay);
+
+  // 存储当前选中的元素
+  var selectedElement = null;
+  var highlightEnabled = false;
+
+  // 更新选中元素的高亮显示
+  function updateSelectedHighlight(element) {
+    console.log("updateSelectedHighlight called with:", element);
+    if (!element) {
+      selectedBox.style.display = "none";
+      selectedLabel.style.display = "none";
+      selectedElement = null;
+      console.log("Cleared selected highlight");
+      return;
+    }
+    selectedElement = element;
+    var rect = element.getBoundingClientRect();
+    console.log("Selected element rect:", rect);
+
+    // 更新选中高亮框位置
+    selectedBox.style.display = "block";
+    selectedBox.style.left = "".concat(rect.left - 2, "px");
+    selectedBox.style.top = "".concat(rect.top - 2, "px");
+    selectedBox.style.width = "".concat(rect.width + 4, "px");
+    selectedBox.style.height = "".concat(rect.height + 4, "px");
+
+    // 更新选中标签位置和内容
+    selectedLabel.style.display = "block";
+    selectedLabel.textContent = "\u2713 <".concat(element.tagName.toLowerCase(), ">");
+
+    // 计算标签位置，确保不超出视窗
+    var labelTop = rect.top - 28;
+    var labelLeft = rect.left;
+
+    // 如果标签会超出顶部，显示在元素下方
+    if (labelTop < 5) {
+      labelTop = rect.bottom + 5;
+    }
+
+    // 如果标签会超出右侧，向左调整
+    var labelWidth = selectedLabel.offsetWidth || 100; // 预估宽度
+    if (labelLeft + labelWidth > window.innerWidth - 10) {
+      labelLeft = window.innerWidth - labelWidth - 10;
+    }
+    selectedLabel.style.left = "".concat(Math.max(5, labelLeft), "px");
+    selectedLabel.style.top = "".concat(labelTop, "px");
+    console.log("Selected highlight positioned at:", {
+      left: selectedBox.style.left,
+      top: selectedBox.style.top,
+      width: selectedBox.style.width,
+      height: selectedBox.style.height
+    });
+  }
+  function getElementSelector(element) {
+    if (!(element instanceof Element)) throw new Error('Argument must be a DOM element');
+    var segments = [];
+    var current = element;
+    while (current !== document.documentElement) {
+      var selector = '';
+      // 优先检查唯一ID
+      if (current.id && document.querySelectorAll("#".concat(current.id)).length === 1) {
+        segments.unshift("#".concat(current.id));
+        break; // ID唯一，无需继续向上
+      }
+
+      // 生成类名选择器（取第一个有效类名）
+      var classes = Array.from(current.classList).filter(function (c) {
+        return !c.startsWith('js-');
+      });
+      var className = classes.length > 0 ? ".".concat(classes[0]) : '';
+
+      // 生成位置索引（nth-child）
+      var tag = current.tagName.toLowerCase();
+      if (!className) {
+        var siblings = Array.from(current.parentNode.children);
+        var index = siblings.findIndex(function (el) {
+          return el === current;
+        }) + 1;
+        selector = "".concat(tag, ":nth-child(").concat(index, ")");
+      } else {
+        selector = className;
+      }
+      segments.unshift(selector);
+      current = current.parentElement;
+    }
+
+    // 处理根元素
+    if (current === document.documentElement) {
+      segments.unshift('html');
+    }
+    return segments.join(' > ');
+  }
+
+  // 获取元素文本内容
+  function getElementText(element) {
+    var _element$textContent;
+    if (element.tagName === "INPUT") {
+      return element.value || element.placeholder || "";
+    }
+    if (element.tagName === "TEXTAREA") {
+      return element.value || element.placeholder || "";
+    }
+    var text = ((_element$textContent = element.textContent) === null || _element$textContent === void 0 ? void 0 : _element$textContent.trim()) || "";
+    return text.length > 50 ? text.substring(0, 50) + "..." : text;
+  }
+
+  // 获取元素属性信息
+  function getElementAttributes(element) {
+    var attrs = {};
+    for (var i = 0; i < element.attributes.length; i++) {
+      var attr = element.attributes[i];
+      attrs[attr.name] = attr.value;
+    }
+    return attrs;
+  }
+
+  // 鼠标悬停事件处理
+  function handleMouseOver(e) {
+    if (!highlightEnabled) return;
+    var target = e.target;
+    if (!target || target === overlay || target === highlightBox || target === tagLabel || target === selectedBox || target === selectedLabel) {
+      return;
+    }
+
+    // 避免高亮 html 和 body 元素
+    if (target === document.documentElement || target === document.body) {
+      return;
+    }
+
+    // 如果是已选中的元素，不显示悬停高亮
+    if (target === selectedElement) {
+      highlightBox.style.display = "none";
+      tagLabel.style.display = "none";
+      return;
+    }
+    var rect = target.getBoundingClientRect();
+    var selector = getElementSelector(target);
+    var text = getElementText(target);
+    var attributes = getElementAttributes(target);
+
+    // 更新悬停高亮框位置
+    highlightBox.style.display = "block";
+    highlightBox.style.left = "".concat(rect.left - 2, "px");
+    highlightBox.style.top = "".concat(rect.top - 2, "px");
+    highlightBox.style.width = "".concat(rect.width + 4, "px");
+    highlightBox.style.height = "".concat(rect.height + 4, "px");
+
+    // 更新标签位置和内容
+    tagLabel.style.display = "block";
+    tagLabel.textContent = "<".concat(target.tagName.toLowerCase(), ">");
+
+    // 计算标签位置，确保不超出视窗
+    var labelTop = rect.top - 22;
+    var labelLeft = rect.left;
+
+    // 如果标签会超出顶部，显示在元素下方
+    if (labelTop < 0) {
+      labelTop = rect.bottom + 5;
+    }
+
+    // 如果标签会超出右侧，向左调整
+    if (labelLeft + tagLabel.offsetWidth > window.innerWidth) {
+      labelLeft = window.innerWidth - tagLabel.offsetWidth - 5;
+    }
+    tagLabel.style.left = "".concat(Math.max(0, labelLeft), "px");
+    tagLabel.style.top = "".concat(labelTop, "px");
+
+    // 发送消息到父窗口
+    var elementInfo = {
+      tagName: target.tagName.toLowerCase(),
+      rect: {
+        left: rect.left,
+        top: rect.top,
+        right: rect.right,
+        bottom: rect.bottom,
+        width: rect.width,
+        height: rect.height,
+        x: rect.x,
+        y: rect.y
+      },
+      selector: selector,
+      text: text,
+      attributes: attributes,
+      url: window.location.href,
+      path: window.location.pathname,
+      timestamp: Date.now()
+    };
+    try {
+      window.parent.postMessage({
+        type: "iframe-element-hover",
+        data: elementInfo,
+        source: "iframe-highlight-injector"
+      }, "*");
+    } catch (error) {
+      console.warn("无法发送消息到父窗口:", error);
+    }
+  }
+
+  // 鼠标离开事件处理
+  function handleMouseOut(e) {
+    if (!highlightEnabled) return;
+    var relatedTarget = e.relatedTarget;
+
+    // 如果鼠标移动到高亮相关元素上，不隐藏高亮
+    if (relatedTarget && (relatedTarget === highlightBox || relatedTarget === tagLabel || relatedTarget === overlay || relatedTarget === selectedBox || relatedTarget === selectedLabel)) {
+      return;
+    }
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    try {
+      window.parent.postMessage({
+        type: "iframe-element-hover",
+        data: null,
+        source: "iframe-highlight-injector"
+      }, "*");
+    } catch (error) {
+      console.warn("无法发送消息到父窗口:", error);
+    }
+  }
+
+  // 点击事件处理
+  function handleClick(e) {
+    var target = e.target;
+    if (!target || target === overlay || target === highlightBox || target === tagLabel || target === selectedBox || target === selectedLabel) {
+      return;
+    }
+
+    // 避免处理 html 和 body 元素
+    if (target === document.documentElement || target === document.body) {
+      return;
+    }
+
+    // 检查是否是交互元素，这些元素需要保留默认行为
+    var isInteractiveElement = ['input', 'textarea', 'select', 'button', 'a'].includes(target.tagName.toLowerCase());
+
+    // 如果高亮功能启用，对于非交互元素阻止默认行为和事件传播
+    if (highlightEnabled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    var rect = target.getBoundingClientRect();
+    var selector = getElementSelector(target);
+    var text = getElementText(target);
+    var attributes = getElementAttributes(target);
+    console.log("Element clicked:", {
+      tagName: target.tagName,
+      selector: selector,
+      rect: rect
+    });
+
+    // 立即更新选中高亮
+    updateSelectedHighlight(target);
+
+    // 隐藏悬停高亮，因为现在是选中状态
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    var elementInfo = {
+      tagName: target.tagName.toLowerCase(),
+      rect: {
+        left: rect.left,
+        top: rect.top,
+        right: rect.right,
+        bottom: rect.bottom,
+        width: rect.width,
+        height: rect.height,
+        x: rect.x,
+        y: rect.y
+      },
+      selector: selector,
+      text: text,
+      attributes: attributes,
+      url: window.location.href,
+      path: window.location.pathname,
+      timestamp: Date.now()
+    };
+    try {
+      window.parent.postMessage({
+        type: "iframe-element-click",
+        data: elementInfo,
+        source: "iframe-highlight-injector"
+      }, "*");
+    } catch (error) {
+      console.warn("无法发送消息到父窗口:", error);
+    }
+  }
+
+  // 监听来自父窗口的消息
+  function handleParentMessage(event) {
+    console.log("Received message from parent:", event.data);
+    if (event.data.type === "iframe-highlight-toggle") {
+      var enabled = event.data.enabled;
+      console.log("Highlight toggle:", enabled);
+      if (enabled) {
+        enableHighlight();
+      } else {
+        disableHighlight();
+      }
+    } else if (event.data.type === "enable-iframe-highlight") {
+      console.log("Enable iframe highlight");
+      enableHighlight();
+    } else if (event.data.type === "disable-iframe-highlight") {
+      console.log("Disable iframe highlight");
+      disableHighlight();
+    } else if (event.data.type === "toggle-iframe-highlight") {
+      var _enabled = event.data.enabled !== undefined ? event.data.enabled : !highlightEnabled;
+      console.log("Toggle iframe highlight to:", _enabled);
+      if (_enabled) {
+        enableHighlight();
+      } else {
+        disableHighlight();
+      }
+    } else if (event.data.type === "update-selected-element") {
+      var selector = event.data.selector;
+      console.log("Update selected element with selector:", selector);
+      if (selector) {
+        try {
+          var element = document.querySelector(selector);
+          console.log("Found element by selector:", element);
+          updateSelectedHighlight(element);
+        } catch (error) {
+          console.warn("Failed to select element:", error);
+          updateSelectedHighlight(null);
+        }
+      } else {
+        updateSelectedHighlight(null);
+      }
+    } else if (event.data.type === "clear-selected-element") {
+      console.log("Clear selected element");
+      updateSelectedHighlight(null);
+    }
+  }
+
+  // 启用高亮功能
+  function enableHighlight() {
+    console.log("Enabling highlight");
+    document.addEventListener("mouseover", handleMouseOver, true);
+    document.addEventListener("mouseout", handleMouseOut, true);
+    document.addEventListener("click", handleClick, true);
+    highlightEnabled = true;
+    overlay.style.display = "block";
+  }
+
+  // 禁用高亮功能
+  function disableHighlight() {
+    console.log("Disabling highlight");
+    highlightEnabled = false;
+    // 保持事件监听器，但通过 highlightEnabled 变量控制行为
+    // 这样可以保留选中状态的显示
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    // 不隐藏 selectedBox 和 selectedLabel，保留选中状态
+  }
+
+  // 完全禁用高亮功能（移除所有监听器）
+  function fullyDisableHighlight() {
+    console.log("Fully disabling highlight");
+    highlightEnabled = false;
+    document.removeEventListener("mouseover", handleMouseOver, true);
+    document.removeEventListener("mouseout", handleMouseOut, true);
+    document.removeEventListener("click", handleClick, true);
+    overlay.style.display = "none";
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    selectedBox.style.display = "none";
+    selectedLabel.style.display = "none";
+  }
+
+  // 添加事件监听
+  enableHighlight();
+  window.addEventListener("message", handleParentMessage);
+
+  // 暴露全局函数供外部调用
+  window.__iframeHighlightControl = {
+    enable: enableHighlight,
+    disable: disableHighlight,
+    fullyDisable: fullyDisableHighlight,
+    isEnabled: function isEnabled() {
+      return highlightEnabled;
+    },
+    getSelectedElement: function getSelectedElement() {
+      return selectedElement;
+    },
+    updateSelected: updateSelectedHighlight,
+    // 通过消息发送开关控制
+    sendToggleMessage: function sendToggleMessage(enabled) {
+      window.parent.postMessage({
+        type: 'iframe-highlight-status',
+        enabled: enabled || highlightEnabled,
+        source: 'iframe-highlight-injector'
+      }, '*');
+    }
+  };
+
+  // 通知父窗口脚本已加载
+  try {
+    window.parent.postMessage({
+      type: "iframe-highlight-ready",
+      data: {
+        url: window.location.href,
+        userAgent: navigator.userAgent,
+        timestamp: Date.now()
+      },
+      source: "iframe-highlight-injector"
+    }, "*");
+  } catch (error) {
+    console.warn("无法发送就绪消息到父窗口:", error);
+  }
+
+  // 清理函数
+  window.__iframeHighlightCleanup = function () {
+    fullyDisableHighlight();
+    window.removeEventListener("message", handleParentMessage);
+    if (overlay.parentElement) {
+      overlay.parentElement.removeChild(overlay);
+    }
+    delete window.__iframeHighlightInitialized;
+    delete window.__iframeHighlightCleanup;
+  };
+})();
+
+</script>
 </body>
 </html>
